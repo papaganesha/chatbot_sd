@@ -1,0 +1,106 @@
+{
+  "intents": [
+    {
+      "tag": "saudacoes",
+      "patterns": [
+        "Oi",
+        "Ola",
+        "Bom dia",
+        "Boa noite",
+        "Boa tarde",
+        "ajuda"
+      ],
+      "responses": [
+        "Oi, em que posso ajudar??",
+        "Ola, em que posso ajudar??",
+        "Ola, no que posso ajudar??",
+        "Ola, como posso ser util a voce?",
+        "Bem-vindo, em que posso ajuda-lo??",
+        "Bem-vindo, em que posso ser util??"
+      ],
+      "context_set": ""
+    },
+     {
+      "tag": "despedidas",
+      "patterns": [
+        "tchau",
+        "adeus",
+        "ate mais",
+        "ate depois",
+        "falou",
+        "valeu",
+        "bye",
+        "obrigado"
+
+      ],
+      "responses": [
+        "Foi um prazer ajudar, volte sempre!!!",
+        "Volte sempre, estou a sua disposicao!!!",
+        "Obrigado por conversar comigo, estou a sua disposicao!!!"
+      ],
+       "context_set": ""
+    },
+    {
+      "tag": "nome",
+      "patterns": [
+        "Qual seu nome?",
+        "Como devo chama-lo?",
+        "Quem e voce?",
+        "Quem é você?"
+      ],
+      "responses": [
+        "Sou o PyBot",
+        "Pode me chamar de PyBot"
+      ],
+      "context_set": ""
+    },
+    {
+      "tag": "proposito",
+      "patterns": [
+        "Pra o que voce serve?",
+        "Para que voce serve?",
+        "Para o que você serve?",
+        "Oque e que voce faz?",
+        "Oque é que você faz?",
+        "Qual sua funcao?",
+        "Qual sua função?",
+        "Qual seu trabalho?",
+        "Qual sua motivacao?",
+        "Qual sua motivação?",
+        "Qual seu proposito?",
+        "Qual é seu proposito"
+      ],
+      "responses": [
+        "Servir eternamente ao Senhor",
+        "Espalhar a palavra do Mestre"
+      ],
+      "context_set": ""
+    },
+    {
+      "tag": "desenvolveu",
+      "patterns": [
+        "quem te desenvolveu?",
+        "quem te fez?",
+        "quem implementou"
+      ],
+      "responses": [
+        "Desenvolvido por Joao Pedro Alves",
+        "Implementado por Joao Pedro Alves"
+      ],
+      "context_set": ""
+    },
+    {
+      "tag": "nulas",
+      "patterns": [
+        "Digite uma mensagem?",
+        " "
+      ],
+      "responses": [
+        "Faca uma pergunta valida",
+        "Nao estou te entendendo"
+
+      ],
+      "context_set": ""
+    }
+  ]
+}
