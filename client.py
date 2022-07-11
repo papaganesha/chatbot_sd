@@ -21,14 +21,20 @@ def receive_and_return_server_msg():
     received_msg = server.recv(2048)
     return received_msg
 
+def receive_and_insert_server_msgs():
+    received_msg = server.recv(2048)
+    text.insert(END, '\n ' + received_msg.decode())
+
+
 def send():
     if a.get() != "":
         send = '<You> '+a.get()
         text.insert(END, '\n ' + send)
+        print(send)
         server.send(a.get().encode())
         received_msg = receive_and_return_server_msg()
         if received_msg:
-            print('1' + received_msg.decode())
+            print(received_msg.decode())
             text.insert(END, '\n ' + received_msg.decode())
         a.delete(0, END)
     else:
@@ -38,12 +44,10 @@ def clear():
     a.delete(0, END)
 
 
+
+
 text = Text(root, bg="white")
 text.grid(row=0, column=0, columnspan=3)
-'''text.tag_add("highlight", "1.0", END)
-text.tag_configure("highlight", foreground="green")'''
-
-
 
 def clear_msgs():
     text.delete('1.0', END)
@@ -64,18 +68,13 @@ clear = Button(root, text="Limpar", bg="white", width=10, command=clear).grid(ro
 
 
 received_msg = receive_and_return_server_msg()
-print('1' + received_msg.decode())
+print(received_msg.decode())
 text.insert(END, '\n ' + received_msg.decode())
+'''receive_and_insert_server_msgs()'''
+'''root.after(500, receive_and_insert_server_msgs)'''
 root.config(menu=menubar)
 root.mainloop()
 
 
 
-
-'''input_message = input("")
-print(f"<You> {input_message}")
-server.send(input_message.encode())'''
-'''sys.stdout.write("<You>")
-sys.stdout.write(message)
-sys.stdout.flush()'''
 

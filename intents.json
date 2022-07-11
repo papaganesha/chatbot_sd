@@ -81,11 +81,12 @@
       "patterns": [
         "quem te desenvolveu?",
         "quem te fez?",
-        "quem implementou"
+        "quem implementou",
+        "quem e seu mestre"
       ],
       "responses": [
-        "Desenvolvido por Joao Pedro Alves",
-        "Implementado por Joao Pedro Alves"
+        "Meu mestre Joao Pedro",
+        "O melhor dos mestres, Joao Pedro"
       ],
       "context_set": ""
     },

@@ -1,6 +1,7 @@
 import socket
 import select
 import _thread
+from tkinter import *
 import sys
 from cli_bot import initialize_and_return_trained_model, function_for_greetings
 
@@ -25,15 +26,40 @@ list_of_clients=[]
 
 assistant = initialize_and_return_trained_model()
 
+win = Tk()
+win.title('PyBot Server')
+menubar = Menu(win)
+
+text = Text(win, bg="white")
+text.grid(row=0, column=0, columnspan=3)
+
+
+def clear_msgs():
+    text.delete('1.0', END)
+
+editmenu = Menu(menubar, tearoff=0)
+
+editmenu.add_command(label="Limpar mensagens", command=clear_msgs)
+
+menubar.add_cascade(label="Editar", menu=editmenu)
+
+win.config(menu=menubar)
+
+
+
+
 def clientthread(conn, addr, cont):
     welcome_msg = "<Pybot> Bem-vindo a esta sala de bate papo!".encode()
     conn.send(welcome_msg)
+    #text.insert(END, '\n ' + welcome_msg)
+
     #sends a message to the client whose user object is conn
     while True:
             try:     
                 message = conn.recv(2048)    
                 if message:
-                    print(f'< {addr[0]} >< {cont+1} > ' + message.decode())
+                    print(f'< {addr[0]} > <{cont+1}> - ' + message.decode())
+                    print(f"< localhost > - {assistant.request(message.decode())}")
                     message_to_send = f"<Pybot> {assistant.request(message.decode())}"
                     conn.send(message_to_send.encode())
                     #broadcast(message_to_send.encode(),conn)
@@ -42,6 +68,7 @@ def clientthread(conn, addr, cont):
                     remove(conn)
             except:
                 continue
+
 
 def broadcast(message,connection):
     for client in list_of_clients:
@@ -57,6 +84,7 @@ def remove(connection):
         list_of_clients.remove(connection)
 
 cont = 0
+#win.mainloop()
 while True:
     conn, addr = server.accept()
     """
@@ -65,11 +93,14 @@ while True:
     """
     list_of_clients.append(conn)
     print(f'< {addr[0]} >< {cont+1} > connected')
+    #text.insert(END, '\n ' + f'< {addr[0]} >< {cont+1} > connected')
+
     #maintains a list of clients for ease of broadcasting a message to all available people in the chatroom
     #Prints the address of the person who just connected
     _thread.start_new_thread(clientthread,(conn,addr, cont))
     #creates and individual thread for every user that connects
     cont+=1
+
 
 conn.close()
 server.close()

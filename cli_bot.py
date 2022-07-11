@@ -3,12 +3,10 @@ import time
 import random
 
 
-
-
 ## RESPONDER SAUDAÇAO DE ACORDO COM HORARIO DO DIA
 def function_for_greetings(message, response):
 
-    print(f'MSG RECEBIDA: {message} -- TAG/IDENTIFICADOR: SAUDAÇÃO')
+    #print(f'MSG RECEBIDA: {message} -- TAG/IDENTIFICADOR: SAUDAÇÃO')
     actual_hour = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()).split()[1][0:2]
     actual_hour = int(actual_hour)
     if(actual_hour >= 0 and actual_hour <= 5):
@@ -37,21 +35,3 @@ def initialize_and_return_trained_model():
 
 assistant = initialize_and_return_trained_model()
 
-'''def init_cli_bot(assistant):
-    while True:
-        message = input("Enter a message: ")
-        if message == "STOP":
-            False
-        else:
-            if 'populaçao' in message.lower():
-                msg = message.lower().replace('populaçao', 'populacao')
-                print(msg)
-                print('resposta: \n', assistant.request(msg))
-            elif 'população' in message.lower():
-                msg = message.lower().replace('população', 'populacao')
-                print(msg)
-                print('resposta: \n', assistant.request(msg))
-            else:
-                print('resposta: \n', assistant.request(message))
-
-init_cli_bot(assistant)'''
